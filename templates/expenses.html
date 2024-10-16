@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Expenses</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #1a3c6b;
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .form-box {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1a3c6b;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1c8adb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #166ba7;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #1c8adb;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #1c8adb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daily Expenses</h1>
+    <div class="form-container">
+        <div class="form-box">
+            <form action="/expenses" method="POST">
+                <label for="amount_spent">Amount Spent (₹):</label>
+                <input type="number" step="0.01" id="amount_spent" name="amount_spent" required>
+
+                <button type="submit">Add Expense</button>
+            </form>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Amount Spent (₹)</th>
+        </tr>
+        {% for date, amount in expenses.items() %}
+            <tr>
+                <td>{{ date }}</td>
+                <td>{{ amount }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="total">Total Spent Today: ₹{{ total_spent }}</div>
+    <a href="/">Add Another Transaction</a>
+    <a href="/transactions">View All Transactions</a>
+</body>
+</html>

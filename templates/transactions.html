@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Transactions</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #1a3c6b;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #1c8adb;
+            color: white;
+        }
+        .balance {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #1a3c6b;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #1c8adb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Transactions</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount (₹)</th>
+            <th>Remark</th>
+        </tr>
+        {% for transaction_date, records in transactions.items() %}
+            {% for record in records %}
+            <tr>
+                <td>{{ record[0] }}</td>  <!-- Accessing the date from record -->
+                <td>{{ record[1] }}</td>  <!-- Accessing the type from record -->
+                <td>{{ record[2] }}</td>  <!-- Accessing the amount from record -->
+                <td>{{ record[3] }}</td>  <!-- Accessing the remark from record -->
+            </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+    <div class="balance">
+        <strong>Current Balance: ₹{{ balance }}</strong>
+    </div>
+    <a href="/">Add Transaction</a>
+    <a href="/expenses">Add Daily Expenses</a>
+</body>
+</html>

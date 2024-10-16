@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #1a3c6b;
+        }
+        .balance {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #1a3c6b;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #1c8adb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Balance</h1>
+    <div class="balance">Current Balance: ₹{{ balance }}</div>
+
+    <a href="/">Add Another Transaction</a>
+    <a href="/expenses">View Daily Expenses</a>
+</body>
+</html>
